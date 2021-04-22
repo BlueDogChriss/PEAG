@@ -1,0 +1,35 @@
+# reprezentarea numarului natural x in sir binar Gray pe m biti
+def nat_Gray(x,m):
+    #obtine reprezentarea binara a lui x in forma '0b_sir de biti' si extrage sir_biti
+    t=bin(x)[2:]
+    #completarea cu 0 pentru reprezentarea pe m biti
+    t=t.zfill(m)
+    #t este un sir de caractere
+    rezultat = t[0]
+    for i in range(1,m):
+        # efectuarea operatiei XOR la nivel de bit - lucreaza pe numere intregi
+        bit= str(int(t[i]) ^ int(t[i-1]))
+        # adaugarea la sir a caracterului bit
+        rezultat=rezultat+bit
+    # rezultatul este un sir de biti - string cu elemente '0' si '1'
+    return rezultat
+
+# operatia inversa celei prezentate mai sus
+def Gray_bin(bG):
+    m = len(bG)
+    #obtine reprezentarea binara standard, ca sir de caractere
+    bS = bG[0]
+    val=int(bG[0])
+    for i in range(1,m):
+        if bG[i]=='1':
+            val=int(not(val))
+        bS=bS+str(val)
+    #obtine reprezentarea in baza 10 a sirului binar sir
+    n = int(bS, 2)
+    return n
+
+# exemplu de apel
+# import reprezentare_Gray as r
+# rez=r.nat_Gray(15,4)
+# n=r.Gray_bin(rez)
+

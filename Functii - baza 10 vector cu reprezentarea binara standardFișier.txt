@@ -1,0 +1,19 @@
+#reprezentare n pe m biti prin sir binar memorat ca vector de 0-1
+def dec_to_bin(n,m):
+    #reprezentare standard, dar prin sir de caractere
+    repr = bin(n)[2:]
+    #transformare in string de m caractere
+    repr_f = repr.zfill(m)
+    # transformare in sir binar
+    x=[int(repr_f[i]) for i in range(m)]
+    return x
+
+#transfer invers
+def bin_to_dec(x,m):
+    #transfer din lista de int in lista de caractere
+    y=''
+    for i in range(m):
+        y+=str(x[i])
+    #reprezentarea in baza 10
+    n=int(y,2)
+    return n
